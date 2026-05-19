@@ -278,15 +278,37 @@
 \def\pageautorefname{صفحهٔ}
 \def\footnoteautorefname{پاورقی}
 
-\settextfont[Scale=1]{XBZar}
-%\setlatintextfont[Scale=1]{Linux Libertine}
-\setlatintextfont[Scale=1]{Libertinus Serif}
-\setdigitfont{Yas}
+\settextfont[
+  Path=fonts/,
+  Scale=1.09,
+  UprightFont = *.ttf,           % regular
+  BoldFont = * Bold.ttf,           % bold
+  ItalicFont = * Italic.ttf,      % italic
+  BoldItalicFont = * Bold Italic.ttf % bold italic
+]{XB Niloofar}%{XB Zar}
+
+\setlatintextfont[
+  Path=fonts/,
+  Scale=1,
+  UprightFont = *.otf,
+  BoldFont = * Bold.otf,
+  ItalicFont = * Italic.otf,
+  BoldItalicFont = * Bold Italic.otf
+]{Libertinus Serif}
+
+\setdigitfont[
+  Path=fonts/,
+  Scale=1.09,
+  UprightFont = *.ttf,
+  BoldFont = * Bold.ttf,
+  ItalicFont = * Italic.ttf,
+  BoldItalicFont = * Bold Italic.ttf
+]{XB Niloofar}%{Yas}
 
 \interfootnotelinepenalty=10000 % prevent LaTeX from splitting footnotes across pages
 
-\defpersianfont\نستعلیق[Scale=1]{IranNastaliq}
-\defpersianfont\نستعلیق‌درشت[Scale=5]{IranNastaliq}
+\defpersianfont\نستعلیق[Path=fonts/, Scale=1]{IranNastaliq}
+\defpersianfont\نستعلیق‌درشت[Path=fonts/, Scale=5]{IranNastaliq}
 
 \newcaptionname{english}{\listfigurename}{فهرست شکل‌ها}
 \newcaptionname{english}{\listtablename}{فهرست جدول‌ها}
