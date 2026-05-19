@@ -90,10 +90,7 @@
     \ifdefined\st@consult\\[3\bigskipamount]{\@titlepagesize\@undercons}\\{\st@consult}\if@nonlatin\\[3\bigskipamount]\else\\[4\bigskipamount]\fi\else\if@nonlatin\\[6\bigskipamount]\else\\[7\bigskipamount]\fi\fi}
   \def\@date{\vspace{100pt}\ifdefined\st@date\st@date\else\if@nonlatin\today\else\latintoday\fi\fi\vspace{-100pt}}
   \origin@lmaketitle
-  \newcommand\date[1]{\def\st@date{##1}}
-  \newcommand\title[1]{\def\st@title{##1}}
-  \newcommand\author[1]{\def\st@author{##1}}
-  \newcommand\subject[1]{\def\st@subject{##1}}}
+  }
 \renewcommand\date[1]{\def\st@date{#1}}
 \renewcommand\title[1]{\def\st@title{#1}}
 \newcommand\titlelineone[1]{\def\st@titlelineone{#1}}
@@ -240,7 +237,7 @@
 \RequirePackage{multicol,float,array}
 \RequirePackage{url}
 % The order of package inclusions is important
-\RequirePackage[localise]{xepersian}
+\RequirePackage[localize]{xepersian}
 
 %% Define a new 'leo' style for the package that will use a smaller font.
 \def\url@leostyle{%
@@ -308,14 +305,14 @@
 	\renewcommand*{\glsgroupheading}[1]{}%
 	\renewcommand*{\glsgroupskip}{}%
 	% \glossaryentryfield{label}{formatted name}{description}{symbol}{number list}
-	\renewcommand*{\glossaryentryfield}[5]{%
-		\glstarget{##1}{##2}% persian term
-		\dotfill%dots
-		\space \lr{##3} \\%translation term
-	}%
-	\renewcommand*{\glossarysubentryfield}[6]{%
-		\glossaryentryfield{##2}{##3}{##4}{##5}{##6}%
-	}%
+  \renewcommand*{\glossentry}[2]{%
+      \glstarget{##1}{\glossentryname{##1}}% persian term
+      \dotfill%dots
+      \space \lr{\glossentrydesc{##1}} \\%translation term
+    }%
+    \renewcommand*{\subglossentry}[3]{%
+      \glossentry{##2}{##3}%
+    }%
 }
 \newglossarystyle{english-to-persian}{%
 	\renewenvironment{theglossary}%
@@ -325,14 +322,14 @@
 	\renewcommand*{\glsgroupheading}[1]{}%
 	\renewcommand*{\glsgroupskip}{}%
 	% \glossaryentryfield{label}{formatted name}{description}{symbol}{number list}
-	\renewcommand*{\glossaryentryfield}[5]{%
-		\glstarget{##1}{##2}%translation term
-		\dotfill%dots
-		\space \rl{##3} \\%persian term
-	}%
-	\renewcommand*{\glossarysubentryfield}[6]{%
-		\glossaryentryfield{##2}{##3}{##4}{##5}{##6}%
-	}%
+  \renewcommand*{\glossentry}[2]{%
+      \glstarget{##1}{\glossentryname{##1}}%translation term
+      \dotfill%dots
+      \space \rl{\glossentrydesc{##1}} \\%translation term
+    }%
+    \renewcommand*{\subglossentry}[3]{%
+      \glossentry{##2}{##3}%
+    }%
 }
 
 \newglossary{p2e-terms}{fa.gls}{fa.glo}{واژه‌نامه‌ی فارسی به انگلیسی} % persian to english
