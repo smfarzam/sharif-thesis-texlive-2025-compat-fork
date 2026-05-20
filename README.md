@@ -1,40 +1,15 @@
-# Sharif Thesis
+# Sharif Thesis - TeXLive 2025 Compatibility Fork
 
-This project provides a template for writing thesis in XeLaTeX according to the style of Sharif University of Technology ([SUT](http://sharif.edu/)). The base description of the thesis style is made available by the [Central Library of the University](http://library.sharif.ir/c/document_library/get_file?uuid=fafd46dd-aa75-46e0-8087-5f5186a260c1&groupId=738621). All SUT's theses are supposed to be written in Persian. The [XePersian](http://www.ctan.org/tex-archive/macros/xetex/latex/xepersian) package is employed for typesetting Persian text. And scrbook is used as the base document class for the sharifthesis document class.
+This is a temporary fork of [sharif-thesis](https://github.com/momeni/sharif-thesis) intended to address compatibility issues with TeX Live 2025. I will make a pull request from the upstream repository upon completion. The repo will be archived if changes merged.
 
-## Template Organization
-The template is organized as follows:
- * sharifthesis.cls: The document class. Probably you don't need to read it for writing your thesis,
- * main.tex: The main file. Read it carefully. Approximately all lines must be changed to reproduce your thesis information like keywords, title, advisor professor, and so on,
- * general folder: includes all codes which are not limited to a particular chapter of the thesis,
-   * abstract.tex: The abstract in Persian,
-   * abstract-en.tex: The abstract in English,
-   * glossaries.tex: List of glossary words. For examples read the main.pdf file,
-   * preamble.tex: Includes all related files. Probably you won't need to read it,
-   * translitaration.tex: Translitarate English words to Persian alphabet and define English TeX commands for writing them faster,
-   * thesis\_content.tex: This file must be updated to include all chapters,
- * img folder: Includes all images (it may have subfolders too),
- * resources: Includes resources.bib for citations. You may want to save PDF of used resources in that folder too,
- * one folder for each chapter of the thesis including a .tex file with the same name. For example find the introduction and future\_work folders.
+### Changes
+- Updated deprecated commands with the help of AI agents
+- Integrated fonts inside the repo
+- Changed main text font to XB Niloofar
 
-## Compilation
-For compiling TeX files to PDF, issue **make** command. It compiles biber (a biblatex engine) for references, xindy for two glossaries, and XeLaTeX for the PDF file itself. It compiles as many times as required to get all cross-links correctly compiled. In sake of fast compilation, you can use **make once** which just runs XeLaTeX one time. While the thesis is not finalized, it's not important to always have an updated glossary or references list. So you can **make once** by default and **make** to obtain the final version. By the way, you need to **make** for the first time. Because with empty glossaries, **make once** won't succeed. Also you should add name of all TeX files to the *TEX0* variable in the Makefile.
+### Why This Template
+Generally, [thesis-template](https://github.com/zarrabi/thesis-template) is preferred over [sharif-thesis](https://github.com/momeni/sharif-thesis); It is more popular, simpler and easier to use. However when considering the glossary part, [sharif-thesis](https://github.com/momeni/sharif-thesis) is preferred.
 
-## License
-    Copyright © 2013-2022 Behnam Momeni
+With [sharif-thesis](https://github.com/momeni/sharif-thesis), you can easily manage terms that need to be included in the glossary. Simply enclose each new term in a \term{} command, and the template will automatically detect its first occurrence, place a footnote, and add it to the glossary in alphabetical order.
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See
-    the GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see {http://www.gnu.org/licenses/}.
-
-## Acknowledgments
-I want to acknowledge works of Mr. Sadegh Dorri for his code which was the corner stone helping to build this template and his ideas and TeX codes continuing to improve this template. I also want to thank Mr. Vafa Khalighi for his great work with [XePersian](http://www.ctan.org/tex-archive/macros/xetex/latex/xepersian) package. Most of TeX-based Persian documents owe to him :) At last, I should thank all the helpful people that I forgot to mention here (if you want to have your name listed here, drop an email).
+On the other hand, with [thesis-template](https://github.com/zarrabi/thesis-template), you need to manually identify the first occurrence of each term, insert the footnote, and ensure that the glossary entries are sorted alphabetically. This approach can lead to potential issues, such as missing a term, adding a term that isn't actually used in the text, or placing the footnote on an occurrence other than the first one.
